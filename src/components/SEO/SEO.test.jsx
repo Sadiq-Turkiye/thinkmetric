@@ -6,7 +6,7 @@ describe('SEO', () => {
   it('updates route metadata and canonical URL', async () => {
     render(<SEO title="Test page" description="Test description" path="/test" />);
 
-    await waitFor(() => expect(document.title).toBe('Test page | ThinkMetric'));
+    await waitFor(() => expect(document.title).toBe('Think Metric'));
     expect(document.querySelector('meta[name="description"]')).toHaveAttribute('content', 'Test description');
     expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
       'href',
@@ -25,7 +25,7 @@ describe('SEO', () => {
       />
     );
 
-    await waitFor(() => expect(document.title).toBe('Private page | ThinkMetric'));
+    await waitFor(() => expect(document.title).toBe('Think Metric'));
     expect(document.querySelector('meta[name="robots"]')).toHaveAttribute('content', 'noindex, nofollow');
     expect(document.querySelector('meta[property="og:url"]')).toHaveAttribute(
       'content',
@@ -35,12 +35,16 @@ describe('SEO', () => {
       'content',
       'https://www.think-metric.co/images/private.jpg'
     );
-    expect(document.querySelector('meta[property="og:site_name"]')).toHaveAttribute('content', 'ThinkMetric');
+    expect(document.querySelector('meta[property="og:site_name"]')).toHaveAttribute('content', 'Think Metric');
   });
 
-  it('supports an exact title for the home page', async () => {
-    render(<SEO title="ThinkMetric Home Page" path="/" exactTitle />);
+  it('shows the brand name in the tab while keeping the page name for social cards', async () => {
+    render(<SEO title="Contact Us" path="/contact" />);
 
-    await waitFor(() => expect(document.title).toBe('ThinkMetric Home Page'));
+    await waitFor(() => expect(document.title).toBe('Think Metric'));
+    expect(document.querySelector('meta[property="og:title"]')).toHaveAttribute(
+      'content',
+      'Contact Us | Think Metric'
+    );
   });
 });

@@ -28,34 +28,31 @@ function absoluteUrl(value) {
 }
 
 /** Keeps route-specific search and social metadata in sync after navigation. */
-function SEO({ title, description, path = '/', image, imageAlt, jsonLd, noIndex = false, exactTitle = false }) {
+function SEO({ title, description, path = '/', image, imageAlt, jsonLd, noIndex = false }) {
   useEffect(() => {
-    const pageTitle = title || seoDefaults.defaultTitle;
-    const fullTitle = exactTitle
-      ? pageTitle
-      : pageTitle.endsWith(seoDefaults.titleSuffix)
-      ? pageTitle
-      : `${pageTitle}${seoDefaults.titleSuffix}`;
+    // The browser tab shows the brand name alone on every route; the page's
+    // own title is kept for social cards, where a bare brand name says nothing.
+    const socialTitle = title ? `${title} | ${seoDefaults.siteName}` : seoDefaults.siteName;
     const fullDescription = description || seoDefaults.description;
     const canonicalUrl = absoluteUrl(path);
     const socialImage = absoluteUrl(image || seoDefaults.ogImage);
-    const socialImageAlt = imageAlt || fullTitle;
+    const socialImageAlt = imageAlt || socialTitle;
 
-    document.title = fullTitle;
+    document.title = seoDefaults.siteName;
     setMeta('description', fullDescription);
     setMeta('robots', noIndex ? 'noindex, nofollow' : 'index, follow');
 
-    setMeta('og:title', fullTitle, 'property');
+    setMeta('og:title', socialTitle, 'property');
     setMeta('og:description', fullDescription, 'property');
     setMeta('og:type', 'website', 'property');
-    setMeta('og:site_name', 'ThinkMetric', 'property');
+    setMeta('og:site_name', seoDefaults.siteName, 'property');
     setMeta('og:locale', 'en_US', 'property');
     setMeta('og:url', canonicalUrl, 'property');
     setMeta('og:image', socialImage, 'property');
     setMeta('og:image:alt', socialImageAlt, 'property');
 
     setMeta('twitter:card', 'summary_large_image');
-    setMeta('twitter:title', fullTitle);
+    setMeta('twitter:title', socialTitle);
     setMeta('twitter:description', fullDescription);
     setMeta('twitter:image', socialImage);
     setMeta('twitter:image:alt', socialImageAlt);
@@ -75,7 +72,7 @@ function SEO({ title, description, path = '/', image, imageAlt, jsonLd, noIndex 
     }
 
     return () => document.getElementById('page-jsonld')?.remove();
-  }, [title, description, path, image, imageAlt, jsonLd, noIndex, exactTitle]);
+  }, [title, description, path, image, imageAlt, jsonLd, noIndex]);
 
   return null;
 }

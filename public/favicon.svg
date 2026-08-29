@@ -1,6 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <rect width="48" height="48" rx="9" fill="#0E392A"/>
-  <path d="M10 34V16l7 10 7-10v18" fill="none" stroke="#F5F6F2" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M31 34V16" fill="none" stroke="#B9D8C8" stroke-width="3.2" stroke-linecap="round"/>
-  <circle cx="31" cy="12" r="2.6" fill="#B9D8C8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <style>
+    .t { fill: #A2A2A4; }
+    .m { fill: #0E392A; }
+  </style>
+  <g clip-path="url(#cap)">
+    <polygon class="t" points="1,17.12 23.32,17.12 23.32,23.32 1,23.32" />
+    <polygon class="t" points="9.06,17.12 15.26,17.12 15.26,46.88 9.06,46.88" />
+    <polygon class="m" points="28.28,17.12 34.48,17.12 34.48,46.88 28.28,46.88" />
+    <polygon class="m" points="56.8,17.12 63,17.12 63,46.88 56.8,46.88" />
+    <polygon class="m" points="26.7542,14.64 33.6292,14.64 50.2658,49.36 43.3908,49.36" />
+    <polygon class="m" points="57.6508,14.64 64.5258,14.64 47.8892,49.36 41.0142,49.36" />
+  </g>
+  <defs>
+    <clipPath id="cap">
+      <rect x="0" y="17.12" width="64" height="29.76" />
+    </clipPath>
+  </defs>
 </svg>

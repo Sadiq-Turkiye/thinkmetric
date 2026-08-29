@@ -1,0 +1,12 @@
+{
+  "name": "Think Metric",
+  "short_name": "Think Metric",
+  "icons": [
+    { "src": "/brand/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/brand/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ],
+  "theme_color": "#0E392A",
+  "background_color": "#0E392A",
+  "display": "standalone",
+  "start_url": "/"
+}

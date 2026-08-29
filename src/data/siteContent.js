@@ -113,8 +113,8 @@ export const categories = [
 ];
 
 export const seoDefaults = {
-  titleSuffix: ' | ThinkMetric',
-  defaultTitle: 'Wind LiDAR & Remote Power Solutions',
+  // Every route shows the brand name alone in the browser tab.
+  siteName: 'Think Metric',
   ogImage: '/images/og-image.jpg',
   // Same string already used as the Home page's own description (and in
   // index.html's static meta tag) — reused here as the fallback for any
@@ -127,8 +127,7 @@ export const seoDefaults = {
 // across browser tabs, search results, and social previews.
 export const pageSeo = {
   home: {
-    title: 'ThinkMetric Home Page',
-    exactTitle: true,
+    title: 'Wind LiDAR & Remote Power Solutions',
     description: seoDefaults.description,
     path: '/',
   },
